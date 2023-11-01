@@ -2,7 +2,7 @@ const STUDENTDB = "StudentDB"
 
 // retourner la base de donnée locale
 function getLocalDB() {
-    if(localStorage.getItem(STUDENTDB)) {
+    if(!localStorage.getItem(STUDENTDB)) {
         localStorage.setItem(STUDENTDB, JSON.stringify([]))
     }
     return JSON.parse(localStorage.getItem(STUDENTDB))
@@ -16,7 +16,7 @@ function updateDB(db) {
 // ajout d'un étudiant
 function addStudent(student) {
     const db = getLocalDB()
-    student.id = Date.now() + ""
+    student.id = Date.now()+"";
     db.push(student)
     updateDB(db)
 }
@@ -48,6 +48,8 @@ function deleteStudent(student) {
     const updatedDb = db.filter(function(curStudent) {
         return curStudent.id != student.id
     })
+
+    updateDB(updatedDb)
 }
 
 // récupérer un étudiant par rapport à son id
@@ -56,8 +58,8 @@ function getStudent(id) {
     var student = db.filter((data)=> data.id == id)
 
     
-    if (filteredDb.length > 0) {
-        return filteredDb[0]
+    if (filteredDB.length > 0) {
+        return filteredDB[0]
     }
     return null
 }
@@ -69,4 +71,6 @@ function searchStudentByName(name) {
     const filteredDb = db.filter((data) => {
         return data.nom.toLowerCase().includes(name.ToLowerCase()) || data.prenom.toLowerCase().includes(name.ToLowerCase())
     })
+
+    return filteredDb
 }
