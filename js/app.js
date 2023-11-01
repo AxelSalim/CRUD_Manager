@@ -1,3 +1,13 @@
+const checkIfEmptyValue = (obj) => {
+    let isEpmty = false;
+    for (const prop in obj) {
+        if (obj[prop] == "") {
+            isEpmty = true;
+        }
+    }
+    return isEpmty
+}
+
 const App = {
     // On définie ici les variables qu'on utilisera 
     data() {
@@ -5,11 +15,17 @@ const App = {
             showHome: false,
             showCreateForm: false,
             showStudentsList: false,
+            newStudent: {
+                nom: "", 
+                prenom: "",
+                dateNaissance: "", 
+                niveauScolaire: "",
+            }
         }
     }, 
 
     mounted() {
-        this.changeNavigationState("home"); 
+        this.changeNavigationState("create"); 
     },
 
     methods: {
@@ -21,6 +37,14 @@ const App = {
         },
         goToStudentsList() {
             this.changeNavigationState("list")
+        },
+        submitStudent(){                
+            if (!checkIfEmptyValue(this.newStudent)) {
+                addStudent(this.newStudent)
+                console.log("Etudiant ajouté avec succès");                
+            } else {
+
+            }
         },
         changeNavigationState(destination) {
             this.showCreateForm = false
@@ -42,7 +66,8 @@ const App = {
                     this.showHome = true
                     break;
             }
-        }
+        }, 
+        
     },
 }
 
