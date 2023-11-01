@@ -74,3 +74,13 @@ function searchStudentByName(name) {
 
     return filteredDb
 }
+
+
+function checkIfStudentExist(name, firstname) {
+    const db = getLocalDB()
+    const filteredDb = db.filter((data) => {
+        return data.nom.toLowerCase() == name.toLowerCase() || data.prenom.toLowerCase() == firstname.toLowerCase()
+    })
+
+    return filteredDb.length > 0
+}

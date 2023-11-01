@@ -8,6 +8,24 @@ const checkIfEmptyValue = (obj) => {
     return isEpmty
 }
 
+const showSuccessMessage = (message) => {
+    swal.fire({
+        icon: 'success',
+        title: message,
+        showConfirmButton: false,
+        timer: 1500
+    })
+}
+
+const showErrorMessage = (message) => {
+    swal.fire({
+        icon: 'error',
+        title: 'Oops...',
+        text: message,
+        timer: 1500
+    })
+}
+
 const App = {
     // On définie ici les variables qu'on utilisera 
     data() {
@@ -40,10 +58,22 @@ const App = {
         },
         submitStudent(){                
             if (!checkIfEmptyValue(this.newStudent)) {
-                addStudent(this.newStudent)
-                console.log("Etudiant ajouté avec succès");                
-            } else {
 
+                if(!checkIfStudentExist(this.newStudent.nom, this.newStudent.prenom)) {
+                    
+                    addStudent(this.newStudent)
+                    this.newStudent = {
+                        nom: "", 
+                        prenom: "",
+                        dateNaissance: "", 
+                        niveauScolaire: "",
+                    }
+                    showSuccessMessage("Etudiant ajouté avec succès")
+                } else {
+                    showErrorMessage("Cet Etudiant est déjà inscrit")
+                }
+            } else {
+                showErrorMessage("Veuillez remplir tous les chams")
             }
         },
         changeNavigationState(destination) {
