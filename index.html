@@ -54,6 +54,7 @@
                     <div class="card ">
                         <div class="card-header text-black bg-purple-light">Gestion des étudiants</div>
                         <div class="card-body">
+                            <!-- Creation d'Etudiants -->
                             <div class="mb-4" v-if="showCreateForm">
                                 <div class="d-flex mb-2">
                                     <h5 class="card-title flex-grow-1">Formulaire de création de nouvel étudiant</h5>
@@ -92,6 +93,7 @@
                                     </div>
                                 </form>
                             </div>
+                            <!-- Liste des Etudiants -->
                             <div v-if="showStudentsList">
                                 {{ typeof etudiants[0].id }}
                                 <div class="d-flex mb-2" >
