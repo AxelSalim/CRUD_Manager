@@ -62,7 +62,7 @@ const App = {
         goToStudentsList() {
             this.changeNavigationState("list")
             this.etudiants = this.students
-            console.log(etudiants);
+            console.log(etudiants[0]);
         },
         submitStudent(){                
             if (!checkIfEmptyValue(this.newStudent)) {

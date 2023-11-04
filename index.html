@@ -93,7 +93,6 @@
                                 </form>
                             </div>
                             <div v-if="showStudentsList">
-                                {{ etudiants }}
                                 <div class="d-flex mb-2" >
                                     <h5 class="card-title flex-grow-1">Liste des étudiants</h5>
                                     <div class="d-flex ">
@@ -111,11 +110,11 @@
                                     </thead>
                                 
                                     <tbody>
-                                        <tr>
-                                            <td class="text-center">etudiants.nom</td>
-                                            <td class="text-center">etudiant[i].prenom</td>
-                                            <td class="text-center">etudiant[i].dateNaissance</td>
-                                            <td class="text-center">etudiant[i].niveauScolaire</td>
+                                        <tr v-for="(etudiant, index) in etudiants" :key="index">
+                                            <td class="text-center">{{ etudiants[index].nom }}</td>
+                                            <td class="text-center">{{ etudiants[index].prenom }}</td>
+                                            <td class="text-center">{{ etudiants[index].dateNaissance }}</td>
+                                            <td class="text-center">{{ etudiants[index].niveauScolaire }}</td>
                                             <td class="text-center">
                                                 <button class="btn btn-link"><i class="fas fa-edit"></i></button>
                                                 <button class="btn btn-link"><i class="fas fa-trash"></i></button>
