@@ -93,6 +93,7 @@
                                 </form>
                             </div>
                             <div v-if="showStudentsList">
+                                {{ typeof etudiants[0].id }}
                                 <div class="d-flex mb-2" >
                                     <h5 class="card-title flex-grow-1">Liste des étudiants</h5>
                                     <div class="d-flex ">
@@ -117,7 +118,7 @@
                                             <td class="text-center">{{ etudiants[index].niveauScolaire }}</td>
                                             <td class="text-center">
                                                 <button class="btn btn-link"><i class="fas fa-edit"></i></button>
-                                                <button class="btn btn-link"><i class="fas fa-trash"></i></button>
+                                                <button class="btn btn-link" @click.prevent="dropStudent(parseInt(etudiants[index].id))"><i class="fas fa-trash"></i></button>
                                             </td>
                                         </tr>
                                     </tbody>

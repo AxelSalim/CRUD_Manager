@@ -62,7 +62,7 @@ const App = {
         goToStudentsList() {
             this.changeNavigationState("list")
             this.etudiants = this.students
-            console.log(etudiants[0]);
+            console.log(etudiants[0].id);
         },
         submitStudent(){                
             if (!checkIfEmptyValue(this.newStudent)) {
@@ -84,13 +84,12 @@ const App = {
                 showErrorMessage("Veuillez remplir tous les chams")
             }
         },
-        // students(){
-        //     const storageData = localStorage.getItem(getLocalDB())
+        dropStudent(index){
+            deleteStudent(index);
+            console.log(deleteStudent(index));
+            return this.changeNavigationState("list");
+        },
 
-        //     if(storageData) {
-        //         etudiants = JSON.parse(storageData)
-        //     }
-        // },
         changeNavigationState(destination) {
             this.showCreateForm = false
             this.showHome = false 
