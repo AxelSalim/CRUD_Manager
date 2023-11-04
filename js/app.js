@@ -26,6 +26,8 @@ const showErrorMessage = (message) => {
     })
 }
 
+const students = getLocalDB();
+
 const App = {
     // On définie ici les variables qu'on utilisera 
     data() {
@@ -33,28 +35,34 @@ const App = {
             showHome: false,
             showCreateForm: false,
             showStudentsList: false,
+            etudiants: students,
+            message: "yo",
             newStudent: {
                 nom: "", 
                 prenom: "",
                 dateNaissance: "", 
                 niveauScolaire: "",
-            }
+            },
         }
     }, 
 
     mounted() {
-        this.changeNavigationState("create"); 
+        this.changeNavigationState("create");
+        this.changeNavigationState("list");
     },
 
     methods: {
         goToHome() {
             this.changeNavigationState("home")
+            this.etudiants = this.students
         },
         goToCreateForm() {
             this.changeNavigationState("create")
         },
         goToStudentsList() {
             this.changeNavigationState("list")
+            this.etudiants = this.students
+            console.log(etudiants);
         },
         submitStudent(){                
             if (!checkIfEmptyValue(this.newStudent)) {
@@ -76,6 +84,13 @@ const App = {
                 showErrorMessage("Veuillez remplir tous les chams")
             }
         },
+        // students(){
+        //     const storageData = localStorage.getItem(getLocalDB())
+
+        //     if(storageData) {
+        //         etudiants = JSON.parse(storageData)
+        //     }
+        // },
         changeNavigationState(destination) {
             this.showCreateForm = false
             this.showHome = false 
