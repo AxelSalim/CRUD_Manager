@@ -64,6 +64,7 @@ const App = {
             this.etudiants = this.students
             console.log(etudiants[0].id);
         },
+        // Ajout d'un étudiant
         submitStudent(){                
             if (!checkIfEmptyValue(this.newStudent)) {
 
