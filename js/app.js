@@ -85,6 +85,7 @@ const App = {
                 showErrorMessage("Veuillez remplir tous les champs")
             }
         },
+        // Suppression d'un étudiant
         dropStudent(index){
             deleteStudent(index);
             console.log(index);
