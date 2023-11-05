@@ -120,7 +120,7 @@
                                             <td class="text-center">{{ etudiants[index].niveauScolaire }}</td>
                                             <td class="text-center">
                                                 <button class="btn btn-link"><i class="fas fa-edit"></i></button>
-                                                <button class="btn btn-link" @click="dropStudent(etudiants[index])"><i class="fas fa-trash"></i></button>
+                                                <button class="btn btn-link" @click="dropStudent(etudiants[index].id)"><i class="fas fa-trash"></i></button>
                                             </td>
                                         </tr>
                                     </tbody>
