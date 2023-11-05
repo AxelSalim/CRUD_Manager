@@ -81,12 +81,12 @@ const App = {
                     showErrorMessage("Cet Etudiant est déjà inscrit")
                 }
             } else {
-                showErrorMessage("Veuillez remplir tous les chams")
+                showErrorMessage("Veuillez remplir tous les champs")
             }
         },
         dropStudent(index){
             deleteStudent(index);
-            console.log(deleteStudent(index));
+            console.log(index);
             return this.changeNavigationState("list");
         },
 
